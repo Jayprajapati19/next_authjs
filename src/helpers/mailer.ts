@@ -8,7 +8,7 @@ export const sendEmail = async ({ email, emailType, userId }: any) => {
 
         if (emailType === "VERIFY") {
             await User.findByIdAndUpdate(userId,
-                { verifyToken: hashedToken, verifyTokenExpire: Date.now() + 3600000 })
+                { verifyToken: hashedToken, verifyTokenExpiry: Date.now() + 3600000 })
 
         } else if (emailType === "RESET") {
             await User.findByIdAndUpdate(userId,
@@ -21,8 +21,8 @@ export const sendEmail = async ({ email, emailType, userId }: any) => {
             host: "sandbox.smtp.mailtrap.io",
             port: 2525,
             auth: {
-                user: "a22944994fd948",
-                pass: "7734210a932bb4"
+                user: "a22944994fd948", //❌
+                pass: "7734210a932bb4" //❌
             }
         });
 
